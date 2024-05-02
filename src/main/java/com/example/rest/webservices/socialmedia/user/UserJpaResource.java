@@ -84,10 +84,10 @@ public class UserJpaResource {
 
     @PostMapping("/jpa/users/{id}/posts")
     public ResponseEntity<Post> createPostForUser(@PathVariable Integer id, @Valid @RequestBody Post post) {
-        User user = userRepository.findById(id).get();
-        if (user == null)
+        Optional<User> user = userRepository.findById(id);
+        if (user.isEmpty())
             throw new UserNotFoundException("User with id: " + id + " not found");
-        post.setUser(user);
+        post.setUser(user.get());
         postRepository.save(post);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()

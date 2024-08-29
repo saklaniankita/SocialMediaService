@@ -1,5 +1,10 @@
-package com.example.rest.webservices.socialmedia.user;
+package com.example.rest.webservices.socialmedia.controller;
 
+import com.example.rest.webservices.socialmedia.entity.Post;
+import com.example.rest.webservices.socialmedia.entity.User;
+import com.example.rest.webservices.socialmedia.exception.UserNotFoundException;
+import com.example.rest.webservices.socialmedia.repository.PostRepository;
+import com.example.rest.webservices.socialmedia.repository.UserRepository;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -8,7 +13,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Predicate;
 
 @RestController
 public class UserJpaResource {
@@ -87,7 +91,7 @@ public class UserJpaResource {
         Optional<User> user = userRepository.findById(id);
         if (user.isEmpty())
             throw new UserNotFoundException("User with id: " + id + " not found");
-        post.setUser(user.get());
+        post.setId(user.get().getId());
         postRepository.save(post);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()

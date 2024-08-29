@@ -1,4 +1,4 @@
-package com.example.rest.webservices.socialmedia.user;
+package com.example.rest.webservices.socialmedia.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
@@ -14,7 +14,7 @@ import lombok.ToString;
 @Getter   //lombok annotation
 @Setter   //lombok annotation
 @NoArgsConstructor    //lombok annotation
-@ToString(includeFieldNames = true)
+@ToString
 public class Post {
 
     @Id
@@ -26,15 +26,6 @@ public class Post {
     @ManyToOne
     @JsonIgnore
     private User user;
-//
-//    No args Constructor is required but is provided by lombok
-//    public Post() {
-//    }
-
-    public Post(String description, User user) {
-        this.description = description;
-        this.user = user;
-    }
 
 //    public Integer getId() {
 //        return id;

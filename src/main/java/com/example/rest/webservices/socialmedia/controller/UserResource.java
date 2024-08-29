@@ -1,5 +1,8 @@
-package com.example.rest.webservices.socialmedia.user;
+package com.example.rest.webservices.socialmedia.controller;
 
+import com.example.rest.webservices.socialmedia.entity.User;
+import com.example.rest.webservices.socialmedia.service.UserDaoService;
+import com.example.rest.webservices.socialmedia.exception.UserNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

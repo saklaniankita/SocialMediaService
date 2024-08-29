@@ -1,5 +1,6 @@
-package com.example.rest.webservices.socialmedia.user;
+package com.example.rest.webservices.socialmedia.service;
 
+import com.example.rest.webservices.socialmedia.entity.User;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;

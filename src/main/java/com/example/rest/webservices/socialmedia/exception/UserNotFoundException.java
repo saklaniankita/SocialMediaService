@@ -1,4 +1,4 @@
-package com.example.rest.webservices.socialmedia.user;
+package com.example.rest.webservices.socialmedia.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

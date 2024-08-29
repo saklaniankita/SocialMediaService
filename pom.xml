@@ -12,7 +12,7 @@
 	<artifactId>SocialMediaApplication</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SocialMediaApplication</name>
-	<description>Demo project for Restful Web Application</description>
+	<description>Demo project for Restful Web Service</description>
 	<properties>
 		<java.version>21</java.version>
 	</properties>

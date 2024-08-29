@@ -14,7 +14,7 @@ import lombok.ToString;
 @Getter   //lombok annotation
 @Setter   //lombok annotation
 @NoArgsConstructor    //lombok annotation
-@ToString
+@ToString(includeFieldNames = false)
 public class Post {
 
     @Id

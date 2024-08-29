@@ -91,7 +91,7 @@ public class UserJpaResource {
         Optional<User> user = userRepository.findById(id);
         if (user.isEmpty())
             throw new UserNotFoundException("User with id: " + id + " not found");
-        post.setId(user.get().getId());
+        post.setUser(user.get());
         postRepository.save(post);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()

@@ -18,7 +18,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
+@ToString(includeFieldNames = false)
 @Entity(name = "user_details")
 public class User {
 

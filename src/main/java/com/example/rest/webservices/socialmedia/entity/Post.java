@@ -8,13 +8,12 @@ import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Entity    //jakarta persistence annotation
 @Getter   //lombok annotation
 @Setter   //lombok annotation
 @NoArgsConstructor    //lombok annotation
-@ToString(includeFieldNames = false)
+//@ToString(includeFieldNames = false)
 public class Post {
 
     @Id
@@ -51,12 +50,10 @@ public class Post {
 //        this.user = user;
 //    }
 
-//    @Override
-//    public String toString() {
-//        return "Post{" +
-//                "id=" + id +
-//                ", description='" + description + '\'' +
-//                ", user=" + user +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        return "Post{" +
+                "description='" + description + '\'' +
+                '}';
+    }
 }

@@ -2,6 +2,7 @@ package com.example.rest.webservices.socialmedia.controller;
 
 import com.example.rest.webservices.socialmedia.entity.Post;
 import com.example.rest.webservices.socialmedia.entity.User;
+import com.example.rest.webservices.socialmedia.exception.PostNotFoundException;
 import com.example.rest.webservices.socialmedia.exception.UserNotFoundException;
 import com.example.rest.webservices.socialmedia.repository.PostRepository;
 import com.example.rest.webservices.socialmedia.repository.UserRepository;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 @RestController
 public class UserJpaResource {
@@ -111,19 +113,16 @@ public class UserJpaResource {
      * @return
      */
     @GetMapping("/jpa/users/{userId}/posts/{postId}")
-    public void retrievePostByUserAndPostId(@PathVariable Integer userId, @PathVariable Integer postId) {
+    public String Added (@PathVariable Integer userId, @PathVariable Integer postId) {
         System.out.println("I am in the method");
         Optional<User> user = userRepository.findById(userId);
-        System.out.println(user);
-//        if (user == null)
-//            throw new UserNotFoundException("User with id: " + userId + " not found");
-//        System.out.println("user: "+user);
-//          List<Post> posts = user.getPosts();
-//        System.out.println("Posts: "+posts);
-//          Predicate<Post> predicate = e -> e.getId().equals(postId);
-//        System.out.println(posts.stream().filter(predicate).findFirst().get());
-//          return posts.stream().filter(predicate).findFirst().get();
-
-
+        if (user.isEmpty())
+            throw new UserNotFoundException("User with id: " + userId + " not found");
+        List<Post> posts = user.get().getPosts();
+        Predicate<Post> predicate = e -> e.getId().equals(postId);
+        Optional<Post> post = posts.stream().filter(predicate).findFirst();
+        if(post.isEmpty())
+            throw new PostNotFoundException("No post with userId: "+ userId +" & postId: "+postId);
+        return post.get().getDescription();
     }
 }

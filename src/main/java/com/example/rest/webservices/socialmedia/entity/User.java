@@ -10,7 +10,6 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -18,7 +17,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString(includeFieldNames = false)
+//@ToString(includeFieldNames = false)
 @Entity(name = "user_details")
 public class User {
 
@@ -74,13 +73,12 @@ public class User {
 //        this.posts = posts;
 //    }
 //
-//    @Override
-//    public String toString() {
-//        return "User{" +
-//                "id=" + id +
-//                ", name='" + name + '\'' +
-//                ", birthDate=" + birthDate +
-//                ", posts=" + posts.toString() +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", birthDate=" + birthDate +
+                ", posts=" + posts.toString() +
+                '}';
+    }
 }

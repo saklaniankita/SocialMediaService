@@ -106,7 +106,7 @@ public class UserJpaResource {
     }
 
     /**
-     * thsi method not working
+     * Returns a specific post description of a specific user
      *
      * @param userId
      * @param postId
@@ -114,7 +114,6 @@ public class UserJpaResource {
      */
     @GetMapping("/jpa/users/{userId}/posts/{postId}")
     public String Added (@PathVariable Integer userId, @PathVariable Integer postId) {
-        System.out.println("I am in the method");
         Optional<User> user = userRepository.findById(userId);
         if (user.isEmpty())
             throw new UserNotFoundException("User with id: " + userId + " not found");
